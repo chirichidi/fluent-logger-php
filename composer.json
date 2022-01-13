@@ -1,9 +1,9 @@
 {
-    "name": "fluent/logger",
+    "name": "chirichidi/logger",
     "type": "library",
     "description": "a logging library for Fluentd",
     "keywords": ["log","logging"],
-    "homepage": "http://github.com/fluent/fluent-logger-php",
+    "homepage": "https://github.com/chirichidi/fluent-logger-php",
     "license": "Apache",
     "authors": [
         {
@@ -20,7 +20,7 @@
         }
     ],
     "require": {
-        "php": "^5.6"
+        "php": "^8.0"
     },
     "require-dev": {
         "phpunit/phpunit": "~4.3",

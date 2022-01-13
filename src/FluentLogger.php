@@ -406,9 +406,14 @@ class FluentLogger implements LoggerInterface
                 $nwrite = $this->write($buffer);
 
                 if ($nwrite === false) {
-                    // could not write messages to the socket.
-                    // e.g) Resource temporarily unavailable
-                    throw new \Exception("could not write message");
+                    if ($retry > $this->getOption("max_write_retry", self::MAX_WRITE_RETRY)) {
+                        // could not write messages to the socket.
+                        // e.g) Resource temporarily unavailable
+                        throw new \Exception("could not write message");
+                    }
+                    usleep(1000);
+                    $retry++;
+                    continue;
                 } else if ($nwrite === "") {
                     // sometimes fwrite returns null string.
                     // probably connection aborted.
